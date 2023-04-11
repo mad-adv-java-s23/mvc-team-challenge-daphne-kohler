@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Tip Calculator</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #dddddd;
-        }
-    </style>
 </head>
 <body>
     <h1>Tip Calculator</h1>
-    <form method="post" action="tipcalculator">
-        <label>Bill Amount: </label><input type="text" name="billAmount" value="${tipBean.billAmount}"><br>
-        <label>Tip Percentage: </label><input type="text" name="tipPercentage" value="${tipBean.tipPercentage}"><br>
-        <input type="submit" value="Calculate Tip"><br>
-        <c:if test="${not empty errorMessage}">
-            <p style="color:red"><c:out value="${errorMessage}"/></p>
-        </c:if>
+    <form action="tipcalculator" method="post">
+        <label for="billAmount">Bill Amount:</label>
+        <input type="text" id="billAmount" name="billAmount">
+        <br>
+        <button type="submit">Calculate</button>
     </form>
-    <c:if test="${
+    <br>
+    <table>
+        <tr>
+            <th>Tip Percentage</th>
+            <th>Tip Amount</th>
+            <th>Total Price</th>
+        </tr>
+        <c:forEach var="i" begin="0" end="3">
+            <tr>
+                <td>${i*5}%</td>
+                <td>${tipAmounts[i]}</td>
+                <td>${totalPrices[i]}</td>
+            </tr>
+        </c:forEach>
+        <c:if test="${tipCalculatorBean.tipPercentage ne 0}">
+            <tr>
+                <td>Custom (${tipCalculatorBean.tipPercentage*100}%)</td>
+                <td>${tipCalculatorBean.billAmount*tipCalculatorBean.tipPercentage}</td>
+                <td>${tipCalculatorBean.billAmount+tipCalculatorBean.billAmount*tipCalculatorBean.tipPercentage}</td>
+            </tr>
+        </c:if>
+    </table>
+</body>
+</html>
