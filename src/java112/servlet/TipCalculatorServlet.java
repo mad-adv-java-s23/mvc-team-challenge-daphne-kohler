@@ -34,8 +34,8 @@ public class TipCalculatorServlet extends HttpServlet {
         request.setAttribute("tipCalculatorBean", tipCalculatorBean);
         request.setAttribute("tipAmounts", tipAmounts);
         request.setAttribute("totalPrices", totalPrices);
-        
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("tipcalculator.jsp");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("tipCalculator.jsp");
         requestDispatcher.forward(request, response);
     }
 }
