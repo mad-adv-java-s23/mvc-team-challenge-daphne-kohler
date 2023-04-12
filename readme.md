@@ -1,8 +1,6 @@
-//TODO update the line below for your team and project.
-# MVC Team Challenge Repository
+# Daphne Kohler
 
-//TODO add your team member names below.
-### Team Members:
+### Team Members: Jake, Kevin, Vuong
 
 ### Repository Notes
 1. This repository is structured like your projects repository for class, with one main difference:
