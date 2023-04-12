@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.util.*;
 import java112.TipCalculatorBean;
 
+@WebServlet(
+        name = "TipCalculatorServlet",
+        urlPatterns = {"/TipCalculatorServlet"}
+)
+
 public class TipCalculatorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         double billAmount = Double.parseDouble(request.getParameter("billAmount"));
@@ -29,6 +34,7 @@ public class TipCalculatorServlet extends HttpServlet {
         request.setAttribute("tipCalculatorBean", tipCalculatorBean);
         request.setAttribute("tipAmounts", tipAmounts);
         request.setAttribute("totalPrices", totalPrices);
+        
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("tipcalculator.jsp");
         requestDispatcher.forward(request, response);
     }
